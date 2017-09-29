@@ -341,7 +341,7 @@ $payload = file_get_contents('php://input');
 $data = json_decode($payload);
 if (is_null($data)) {
 	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
-	die(sprintf('<div class="error">Failed to decode JSON payload</div>')
+	die(sprintf('<div class="error">Failed to decode JSON payload</div>'));
 }
 
 // make sure it's the right branch
