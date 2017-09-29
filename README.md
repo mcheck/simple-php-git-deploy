@@ -1,6 +1,9 @@
 # Simple PHP Git deploy script
 _Automatically deploy the code using PHP and Git._
 
+# I've changed it so the script is only usable from Github webhooks with json payloads (to check the branch)
+Should change it so the config script can decide what way to accept the webhook and act accordingly.
+
 ## Requirements
 
 * `git` and `rsync` are required on the server that's running the script
