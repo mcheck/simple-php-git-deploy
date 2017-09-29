@@ -105,7 +105,7 @@ if (!defined('CLEAN_UP')) define('CLEAN_UP', true);
  *
  * @var string Full path to the file name
  */
-//if (!defined('VERSION_FILE')) define('VERSION_FILE', TMP_DIR.'VERSION');
+if (!defined('VERSION_FILE')) define('VERSION_FILE', TMP_DIR.'VERSION');
 
 /**
  * Time limit for each command.
