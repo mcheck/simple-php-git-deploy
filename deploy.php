@@ -332,6 +332,26 @@ if (CLEAN_UP) {
 	);
 }
 
+
+// =======================================[ Verify we've pushed the correct branch ]===
+
+$payload = file_get_contents('php://input');
+
+// read the payload
+$data = json_decode($payload);
+if (is_null($data)) {
+	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+	die(sprintf('<div class="error">Failed to decode JSON payload</div>')
+}
+
+// make sure it's the right branch
+$branchRef = $data->ref;
+if ($branchRef != 'refs/heads/'.BRANCH) {
+	header($_SERVER['SERVER_PROTOCOL'] . ' 500 Internal Server Error', true, 500);
+	die(sprintf('<div class="error">Ignoring push to %s</div>', $branchRef));
+}
+
+
 // =======================================[ Run the command steps ]===
 $output = '';
 foreach ($commands as $command) {
